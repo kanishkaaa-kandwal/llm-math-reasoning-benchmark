@@ -1,0 +1,18 @@
+ -- Table to track AI Math Proof Evaluations
+CREATE TABLE math_evaluations (
+    eval_id INTEGER PRIMARY KEY,
+    topic VARCHAR(50),
+    ai_model VARCHAR(30),
+    status VARCHAR(20),
+    error_category VARCHAR(100)
+);
+
+-- Sample Data Entry
+INSERT INTO math_evaluations VALUES (1, 'Calculus', 'GPT-4o', 'Failed', 'LHopital Rule Misapplication');
+INSERT INTO math_evaluations VALUES (2, 'Linear Algebra', 'Claude 3.5', 'Passed', 'None');
+INSERT INTO math_evaluations VALUES (3, 'Discrete Math', 'GPT-4o', 'Failed', 'Induction Step Error');
+
+-- Query to find failed models by topic
+SELECT topic, ai_model, error_category 
+FROM math_evaluations 
+WHERE status = 'Failed';
